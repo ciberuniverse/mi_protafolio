@@ -1,0 +1,154 @@
+{
+  "nombre": "Nephtali Hernan Fernandez Miranda",
+  "contacto": "hernan.miranda.fernandez@hotmail.com",
+  "ubicacion": "Chile, Bio-Bio, Concepcion",
+    "estudios": [
+    "Universidad Tecnológica de Chile, INACAP"
+  ],
+  "experiencia": [
+    {
+      "estado": "Terminado",
+      "ocupacion": "Desarrollador FullStack",
+      "empresa": "Liceo San Juan Bautista de Hualqui",
+      "duracion": "Nov 2025 - Enero 2026",
+      "descripcion": "Diseño y desarrollo de un sistema de INTRANET para el Liceo, orientado a la gestión académica y administrativa. La plataforma permitía a los usuarios revisar y administrar información de los participantes. Los profesores podían asignar notas, registrar asistencia y gestionar talleres. Los alumnos contaban con permisos de lectura para consultar su estado académico y realizar inscripciones en talleres. Los apoderados disponían de un perfil con todos sus hijos asociados, desde el cual podían descargar documentos, administrar información y realizar solicitudes de retiro en línea. Los administradores tenían control total del sistema: podían modificar y actualizar datos, administrar roles, gestionar usuarios y bloquear el acceso a la intranet cuando fuese necesario.",
+      "tecnologias": ["Flask", "MongoDB", "Redis", "Python", "HTML", "JavaScript (Vanilla)", "CSS", "Uso de I.A en secciones no logicas (CSS - HTML)"]
+    },
+    {
+      "estado": "En Desarrollo - Hobbie",
+      "ocupacion": "Creador y Desarrollador",
+      "empresa": "cer-TI: Certificaciones gratuitas para T.I",
+      "duracion": "Mayo 2025 - Actualidad",
+      "descripcion": "Desarrollo de un sistema de evaluación para profesionales de TI, que integró procesos de automatización, scripts de scraping y un módulo de gestión de usuarios para administrar sus certificaciones de manera eficiente.",
+      "tecnologias": ["Flask", "MongoDB", "JavaScript (Vanilla)", "HTML", "CSS"]
+    }
+  ],
+  "certificaciones": [
+    {
+      "logotipo": "HackerRank",
+      "titulo": "API-Rest Intermedio",
+      "organizacion": "HackerRank",
+      "expedicion": "ene. 2026",
+      "id_credencial": "6fce6b561541",
+      "aptitudes": [
+        "API REST",
+        "Python"
+      ],
+      "archivo": "rest_api_intermediate_certificate.pdf",
+      "descripcion": "Certificado de la habilidad demostrada"
+    },
+    {
+      "logotipo": "DragonJAR Seguridad Informática",
+      "titulo": "Introduccion al Pentesting",
+      "organizacion": "DragonJAR Seguridad Informática",
+      "expedicion": "ene. 2026",
+      "id_credencial": "28b7aa14e719411a9e427f1b4fdd70f8",
+      "aptitudes": [
+        "Nmap",
+        "OSINT",
+        "Escaneo de vulnerabilidades",
+        "Metasploit",
+        "Python Ofensivo",
+        "Pruebas de penetración",
+        "Metodología de implementación"
+      ],
+      "archivo": "pentesting-introduccion.pdf",
+      "descripcion": "Certificado del curso realizado"
+    },
+    {
+      "logotipo": "Webempresa",
+      "titulo": "WooCoommerce Basico",
+      "organizacion": "Webempresa",
+      "expedicion": "ene. 2026",
+      "id_credencial": "2c3d7bc6",
+      "aptitudes": [
+        "Gestión de Contenidos de WordPress",
+        "Diseño de WordPress",
+        "WooCommerce"
+      ],
+      "archivo": "wordpress_woocommerce.pdf",
+      "descripcion": "Certificado de la habilidad adquirida"
+    },
+    {
+      "logotipo": "Webempresa",
+      "titulo": "WordPress Basico",
+      "organizacion": "Webempresa",
+      "expedicion": "ene. 2026",
+      "id_credencial": "b939c2a0",
+      "aptitudes": [
+        "Diseño de WordPress",
+        "Gestión de Contenidos de WordPress"
+      ],
+      "archivo": "wordpress_basico.pdf",
+      "descripcion": "Certificado del curso realizado"
+    },
+    {
+      "logotipo": "Desafío Latam",
+      "titulo": "Retroalimentacion efectiva para Docentes TI",
+      "organizacion": "Desafío Latam",
+      "expedicion": "jun. 2025",
+      "id_credencial": "y1djhfijaw",
+      "aptitudes": [
+        "Capacitación docente"
+      ],
+      "descripcion": "Certificado del curso realizado"
+    },
+    {
+      "logotipo": "Sololearn",
+      "titulo": "Coding For Data",
+      "organizacion": "Sololearn",
+      "expedicion": "may. 2025",
+      "id_credencial": "CC-CZTMXICW",
+      "aptitudes": [
+        "Python"
+      ],
+      "descripcion": "Certificado del curso realizado"
+    },
+    {
+      "logotipo": "Desafío Latam",
+      "titulo": "Git, Github Bases",
+      "organizacion": "Desafío Latam",
+      "expedicion": "may. 2025",
+      "id_credencial": "aoscsycsix",
+      "aptitudes": [
+        "GitHub"
+      ],
+      "descripcion": "Certificado del curso realizado"
+    },
+    {
+      "logotipo": "Sololearn",
+      "titulo": "Python Developer",
+      "organizacion": "Sololearn",
+      "expedicion": "may. 2025",
+      "id_credencial": "CC-TRIPVBUP",
+      "aptitudes": [
+        "Python"
+      ],
+      "descripcion": "Certificado del curso realizado"
+    },
+    {
+      "logotipo": "Desafío Latam",
+      "titulo": "ReactPY Front-End desde el Back-End",
+      "organizacion": "Desafío Latam",
+      "expedicion": "may. 2025",
+      "id_credencial": "drv0xijnkj",
+      "aptitudes": [
+        "Python",
+        "ReactPY"
+      ],
+      "descripcion": "Certificado del curso realizado"
+    },
+    {
+      "logotipo": "HackerRank",
+      "titulo": "Python (Basic)",
+      "organizacion": "HackerRank",
+      "expedicion": "abr. 2025",
+      "id_credencial": "8fec4324703c",
+      "aptitudes": [
+        "Python"
+      ],
+      "descripcion": "Certificado del curso realizado"
+    }
+  ]
+
+}
