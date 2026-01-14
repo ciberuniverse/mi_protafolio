@@ -8,7 +8,7 @@
   ],
   "experiencia": [
     {
-      "ocupacion": "Desarrollador FullStack",
+      "ocupacion": "Desarrollador FullStack (Practica)",
       "empresa": "Liceo San Juan Bautista de Hualqui",
       "duracion": "Nov 2025 - Enero 2026",
       "descripcion": "Diseño y desarrollo de un sistema de INTRANET para el Liceo, orientado a la gestión académica y administrativa. La plataforma permitía a los usuarios revisar y administrar información de los participantes. Los profesores podían asignar notas, registrar asistencia y gestionar talleres. Los alumnos contaban con permisos de lectura para consultar su estado académico y realizar inscripciones en talleres. Los apoderados disponían de un perfil con todos sus hijos asociados, desde el cual podían descargar documentos, administrar información y realizar solicitudes de retiro en línea. Los administradores tenían control total del sistema: podían modificar y actualizar datos, administrar roles, gestionar usuarios y bloquear el acceso a la intranet cuando fuese necesario.",
@@ -28,7 +28,7 @@
       "titulo": "API-Rest Intermedio",
       "organizacion": "HackerRank",
       "expedicion": "ene. 2026",
-      "id_credencial": "6fce6b561541",
+      "url_credencial": "https://www.hackerrank.com/certificates/6fce6b561541",
       "aptitudes": [
         "API REST",
         "Python"
@@ -41,7 +41,7 @@
       "titulo": "Introduccion al Pentesting",
       "organizacion": "DragonJAR Seguridad Informática",
       "expedicion": "ene. 2026",
-      "id_credencial": "28b7aa14e719411a9e427f1b4fdd70f8",
+      "url_credencial": "https://certificados.dragonjar.org/c/28b7aa14e719411a9e427f1b4fdd70f8",
       "aptitudes": [
         "Nmap",
         "OSINT",
@@ -59,7 +59,7 @@
       "titulo": "WooCoommerce Basico",
       "organizacion": "Webempresa",
       "expedicion": "ene. 2026",
-      "id_credencial": "2c3d7bc6",
+      "url_credencial": "https://www.webempresa.com/university/certificado/2c3d7bc6/",
       "aptitudes": [
         "Gestión de Contenidos de WordPress",
         "Diseño de WordPress",
@@ -73,7 +73,7 @@
       "titulo": "WordPress Basico",
       "organizacion": "Webempresa",
       "expedicion": "ene. 2026",
-      "id_credencial": "b939c2a0",
+      "url_credencial": "https://www.webempresa.com/university/certificado/b939c2a0",
       "aptitudes": [
         "Diseño de WordPress",
         "Gestión de Contenidos de WordPress"
@@ -86,7 +86,7 @@
       "titulo": "Retroalimentacion efectiva para Docentes TI",
       "organizacion": "Desafío Latam",
       "expedicion": "jun. 2025",
-      "id_credencial": "y1djhfijaw",
+      "url_credencial": "https://cursos.desafiolatam.com/certificates/y1djhfijaw",
       "aptitudes": [
         "Capacitación docente"
       ],
@@ -97,7 +97,7 @@
       "titulo": "Coding For Data",
       "organizacion": "Sololearn",
       "expedicion": "may. 2025",
-      "id_credencial": "CC-CZTMXICW",
+      "url_credencial": "https://www.sololearn.com/certificates/CC-CZTMXICW",
       "aptitudes": [
         "Python"
       ],
@@ -108,7 +108,7 @@
       "titulo": "Git, Github Bases",
       "organizacion": "Desafío Latam",
       "expedicion": "may. 2025",
-      "id_credencial": "aoscsycsix",
+      "url_credencial": "https://cursos.desafiolatam.com/certificates/aoscsycsix",
       "aptitudes": [
         "GitHub"
       ],
@@ -119,7 +119,7 @@
       "titulo": "Python Developer",
       "organizacion": "Sololearn",
       "expedicion": "may. 2025",
-      "id_credencial": "CC-TRIPVBUP",
+      "url_credencial": "https://www.sololearn.com/certificates/CC-TRIPVBUP",
       "aptitudes": [
         "Python"
       ],
@@ -130,7 +130,7 @@
       "titulo": "ReactPY Front-End desde el Back-End",
       "organizacion": "Desafío Latam",
       "expedicion": "may. 2025",
-      "id_credencial": "drv0xijnkj",
+      "url_credencial": "https://cursos.desafiolatam.com/certificates/drv0xijnkj",
       "aptitudes": [
         "Python",
         "ReactPY"
@@ -142,7 +142,7 @@
       "titulo": "Python (Basic)",
       "organizacion": "HackerRank",
       "expedicion": "abr. 2025",
-      "id_credencial": "8fec4324703c",
+      "url_credencial": "https://www.hackerrank.com/certificates/8fec4324703c",
       "aptitudes": [
         "Python"
       ],

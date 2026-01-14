@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -53,7 +53,8 @@
             animation: pulso 1.5s infinite alternate;
         }
 
-        .target_profile, .experiencias {
+        .target_profile,
+        .experiencias {
             background-color: #1a1a1a;
             padding: 40px;
             display: flex;
@@ -100,10 +101,11 @@
 
         .target_experiencia {
             padding: 20px;
-            
+
+            max-width: 600px;
             background-color: #1a1a1a;
             border: #b22222 solid 1px;
-            width: 100%;
+            width: auto;
 
             transition: 0.3s ease-out;
         }
@@ -117,7 +119,7 @@
             padding-bottom: 5px;
             font-size: medium;
         }
-        
+
         .target_experiencia .tecnologias {
 
             margin-top: 10px;
@@ -128,7 +130,7 @@
             border-top: 1px solid #b22222;
             font-size: small;
         }
-        
+
         .target_experiencia:hover {
             transform: scale(1.03);
             transition: ease-in 0.3s;
@@ -136,7 +138,7 @@
 
         .experiencias {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             gap: 60px;
         }
 
@@ -146,7 +148,25 @@
 
         .proyecto {
             max-width: 500px;
-            width: 500px;
+            width: auto;
+        }
+
+        .certificaciones {
+            background-color: #1a1a1a;
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+        }
+
+        .certificaciones .target_experiencia {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .certificaciones h3 {
+            padding: 20px;
+            text-align: center;
         }
 
     </style>
@@ -167,38 +187,30 @@
     <section id="loaded" hidden>
 
         <div id="seccion_perfil" class="target_profile">
-
+            <!-- Seccion del perfil -->
         </div>
         <hr>
-        
+
         <div class="experiencias">
-            
+
             <div>
                 <h3>EXPERIENCIAS = True</h3>
                 <div id="experiencias_block"> <!-- Bloque dinamico de experiencias aqui --></div>
             </div>
-            
-            <div>
-                <h3>PROYECTOS = system</h3>
-                <div id="proyectos_block"> <!-- Bloque dinamico proyectos --> 
-                    
-                    <div class="proyecto target_experiencia">
-                        <div class="titulo">Liceo SJBH</div>
-                        <div class="descripcion">Plataforma de intranet dedicada a la administracion del liceo.</div>
-                        <div class="tecnologias">
-                            <a class="github-button" href="https://github.com/tu_usuario/tu_repositorio" data-icon="octicon-mark-github" data-show-count="true" aria-label="Star tu_usuario/tu_repositorio on GitHub">Ir al Repositorio</a>
-                        </div>
-                    </div>
 
-                    <div class="proyecto target_experiencia">
-                        <div class="titulo">Liceo SJBH</div>
-                        <div class="descripcion">Plataforma de intranet dedicada a la administracion del liceo.</div>
-                        <div class="tecnologias">
-                            <a class="github-button" href="https://github.com/tu_usuario/tu_repositorio" data-icon="octicon-mark-github" data-show-count="true" aria-label="Star tu_usuario/tu_repositorio on GitHub">Ir al Repositorio</a>
-                        </div>
-                    </div>
-                
-                </div>
+            <div>
+                <h3>PROYECTOS = system('ls')</h3>
+                <div id="proyectos_block"> <!-- Bloque dinamico proyectos --> </div>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="certificaciones">
+
+            <div id="certificaciones_block">
+                <h3>CERTIFICACIONES = True</h3>
             </div>
 
         </div>
@@ -214,16 +226,19 @@
 
         return informacion
     }
-    
+
     async function renderizar_web(informacion_json) {
 
         const main_content = document.getElementById("loaded")
         const profile_block = document.getElementById("seccion_perfil")
         const experiencias_block = document.getElementById("experiencias_block")
+        const proyectos_block = document.getElementById("proyectos_block")
+        const certificaciones_block = document.getElementById("certificaciones_block")
 
         const info_experiencias = informacion_json["experiencia"]
         const info_estudios = informacion_json["estudios"]
         const info_certificaciones = informacion_json["certificaciones"]
+        const info_proyectos = informacion_json["proyectos"]
 
         plantilla_dom = `
             <div>
@@ -286,9 +301,47 @@
         experiencias_block.innerHTML += dom_creation_tmp
         dom_creation_tmp = ""
 
-        for (let ct of info_certificaciones) {
-            break
+        for (let pr of info_proyectos) {
+            plantilla_dom = `
+                <div class="proyecto target_experiencia">
+                    <div class="titulo">${pr["titulo"]}</div>
+                    <div class="descripcion">${pr["descripcion"]}</div>
+                    <div class="tecnologias">
+                        <a class="github-button" href="${pr["url"]}" data-icon="octicon-mark-github" data-show-count="true" aria-label="Star tu_usuario/tu_repositorio on GitHub">Ir al Repositorio</a>
+                    </div>
+                </div>
+            `
+
+            dom_creation_tmp += plantilla_dom
         }
+
+        proyectos_block.innerHTML = dom_creation_tmp
+        dom_creation_tmp = ""
+
+        for (let ct of info_certificaciones) {
+
+            plantilla_dom = `
+                <div class="target_experiencia">
+                    
+                    <div class="titulo">${ct["titulo"]}</div>
+                    <div class="duracion">${ct["organizacion"]}</div>
+
+                    <div class="tecnologias">
+                        {{ tecnologias }}
+                    </div>
+
+                </div>
+            `
+            tecnologias_ = ""
+            for (let tecnologia_ of ct["aptitudes"]) {
+                tecnologias_ += "> " + tecnologia_ + "\n"
+            }
+
+            plantilla_dom = plantilla_dom.replace("{{ tecnologias }}", tecnologias_)
+            dom_creation_tmp += plantilla_dom
+        }
+
+        certificaciones_block.innerHTML += dom_creation_tmp
 
         return true
     }
