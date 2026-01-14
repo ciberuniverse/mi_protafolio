@@ -148,6 +148,30 @@
       ],
       "descripcion": "Certificado del curso realizado"
     }
-  ]
+  ],
+
+"proyectos": [
+  {
+    "titulo": "INTRANET Liceo SJBH",
+    "descripcion": "Plataforma de intranet orientada a la gestión administrativa y académica del liceo, centralizando procesos internos, comunicación y manejo de información institucional.",
+    "url": "https://github.com/ciberuniverse/liceoSJBH"
+  },
+  {
+    "titulo": "Plataforma Evaluaciones cer-TI",
+    "descripcion": "Plataforma de certificación en tecnologías de la información, enfocada en lenguajes de programación y desafíos de lógica aplicados al ámbito informático.",
+    "url": "https://github.com/ciberuniverse/cerTI"
+  },
+  {
+    "titulo": "LNK-Forge (Ciberseguridad - Ing. Inversa)",
+    "descripcion": "Herramienta educativa orientada al análisis de archivos LNK mediante técnicas de ingeniería inversa, permitiendo comprender cómo se pueden manipular para así detectar, prevenir y mitigar posibles usos maliciosos en entornos reales. Es multiplataforma y trabaja con edición en Base64.",
+    "url": "https://github.com/ciberuniverse/lnkforge"
+  },
+  {
+    "titulo": "CMS Detector",
+    "descripcion": "Herramienta de análisis defensivo que examina sitios web para identificar APIs públicas y endpoints expuestos, ayudando a detectar configuraciones inseguras y reducir riesgos de exposición de servicios críticos.",
+    "url": "https://github.com/ciberuniverse/CMS_Detector"
+  }
+]
+
 
 }
