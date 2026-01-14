@@ -1,0 +1,287 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        body {
+            /* Gradiente más suave: gris oscuro a burdeos */
+            background: linear-gradient(to bottom, #1a1a1a, #2c0a0a, #4d1a1a);
+            margin: 0;
+            padding: 0;
+            font-family: monospace;
+            color: #eaeaea;
+
+            /* texto más claro para contraste */
+        }
+
+        header {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: #1a1a1a;
+            /* gris oscuro en vez de negro puro */
+            color: #f5f5f5;
+            border-bottom: 2px solid #b22222;
+            /* rojo burdeos */
+        }
+
+        @keyframes pulso {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+                color: #b22222;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+
+        .animacion_cargando {
+            animation: pulso 1.5s infinite alternate;
+        }
+
+        .target_profile, .experiencias {
+            background-color: #1a1a1a;
+            padding: 40px;
+            display: flex;
+            font-size: large;
+            /* suaviza el bloque */
+        }
+
+        .target_profile img {
+            border: 2px solid #b22222;
+            /* rojo más apagado */
+            border-radius: 100%;
+            transition: transform 0.3s ease-out;
+        }
+
+        .target_profile img:hover {
+            transform: scale(1.03);
+        }
+
+        .target_profile .info_profile {
+            padding: 40px;
+        }
+
+        .target_profile li {
+            color: #d46a6a;
+            /* rojo más suave */
+            text-shadow: 0 0 6px #4d1a1a;
+            padding-top: 15px;
+        }
+
+        .target_profile label {
+            background-color: rgba(255, 255, 255, 0.05);
+            /* gris translúcido */
+            border: 1px solid #b22222;
+            border-radius: 6px;
+            padding: 5px 10px;
+            color: #f5f5f5;
+
+            transition: transform 0.3s ease-out;
+        }
+
+        .target_profile label:hover {
+            transform: scale(1.03);
+        }
+
+        .target_experiencia {
+            padding: 20px;
+            
+            background-color: #1a1a1a;
+            border: #b22222 solid 1px;
+            width: 50%;
+
+            transition: 0.3s ease-out;
+        }
+
+        .target_experiencia .titulo {
+            color: #b22222;
+        }
+
+        .target_experiencia .duracion {
+            color: gray;
+            padding-bottom: 5px;
+            font-size: medium;
+        }
+        
+        .target_experiencia .tecnologias {
+
+            margin-top: 10px;
+            padding-top: 10px;
+
+            color: #b22222;
+            display: flex;
+            border-top: 1px solid #b22222;
+            font-size: small;
+        }
+        
+        .target_experiencia:hover {
+            transform: scale(1.03);
+            transition: ease-in 0.3s;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>DEVELOPER = "Hernan Miranda"</h1>
+    </header>
+
+    <section id="loading">
+        <center>
+            <h2 class="animacion_cargando">Cargando ...</h2>
+        </center>
+    </section>
+
+    <section id="loaded" hidden>
+
+        <div id="seccion_perfil" class="target_profile">
+
+        </div>
+
+        <div class="experiencias">
+            <div>
+                <h3>EXPERIENCIAS = True</h3>
+                
+                <div id="experiencias_block"> <!-- Bloque dinamico de experiencias aqui --></div>
+                <div class="target_experiencia">
+                <div class="titulo">Practica profesional</div>
+
+                    <div class="duracion">Mayo 2025 - Actualidad</div>
+                    <div class="descripcion">
+                        Esto es un texto de relleno en donde se explica de ejemplo
+                        Esto es un texto de relleno en donde se explica de ejemplo
+                        Esto es un texto de relleno en donde se explica de ejemplo
+                    </div>
+                    
+                    <div class="tecnologias">
+                        > Python
+                        > JavaScript
+                    </div>
+
+                </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+<script>
+
+    async function obtener_informacion() {
+        const response = await fetch("/api/v1/profile", { "method": "get" })
+        const informacion = response.json()
+
+        return informacion
+    }
+    
+    async function renderizar_web(informacion_json) {
+
+        const main_content = document.getElementById("loaded")
+        const profile_block = document.getElementById("seccion_perfil")
+        const experiencias_block = document.getElementById("experiencias_block")
+
+        const info_experiencias = informacion_json["experiencia"]
+        const info_estudios = informacion_json["estudios"]
+        const info_certificaciones = informacion_json["certificaciones"]
+
+        plantilla_dom = `
+            <div>
+                <img
+                    src="https://media.licdn.com/dms/image/v2/D4E03AQH0ELpF5bMKOg/profile-displayphoto-shrink_400_400/B4EZdSaSIOHYAg-/0/1749434313221?e=1769644800&v=beta&t=pfgTNCA9ZoNAoC8pc8ruTfaLzhjiiH30qu6SnaApRrA">
+            </div>
+
+            <div>
+            <div class="info_profile">
+                <ul>
+                    <li>Nombre: </li> <label>${informacion_json["nombre"]}</label>
+                    <li>Contacto: </li> <label>${informacion_json["contacto"]}</label>
+                    <li>Ubicacion: </li> <label>${informacion_json["ubicacion"]}</label>
+                    <li>Lema: </li> <label>Lo que no se sabe, se aprende.</label>
+                </ul>
+            </div>
+
+            <div class="info_profile">
+                <ul>
+                    <li>Descripción: </li>
+                    <label>
+                    ${informacion_json["descripcion"]}
+                    </label>
+                </ul>
+            </div>
+            </div>
+        `
+
+        profile_block.innerHTML = plantilla_dom
+
+        let dom_creation_tmp = ""
+        for (let ex of info_experiencias) {
+
+            plantilla_dom = `
+                <div class="target_experiencia">
+                <div class="titulo">${ex["ocupacion"]}</div>
+
+                    <div class="duracion">${ex["duracion"]}</div>
+                    <div class="descripcion">
+                        ${ex["descripcion"]}
+                    </div>
+                    
+                    <div class="tecnologias">
+                        {{ tecnologias }}
+                    </div>
+
+                </div>
+
+                </div>
+            `
+            tecnologias_ = ""
+            for (let tecnologia_ of ex["tecnologias"]) {
+                tecnologias_ += "> " + tecnologia_ + "\n"
+            }
+
+            plantilla_dom = plantilla_dom.replace("{{ tecnologias }}", tecnologias_)
+            dom_creation_tmp += plantilla_dom
+        }
+
+        experiencias_block.innerHTML += dom_creation_tmp
+        dom_creation_tmp = ""
+
+        for (let ct of info_certificaciones) {
+            break
+        }
+
+        return true
+    }
+
+    async function main(params) {
+
+        const informacion = await obtener_informacion()
+        const continuar = await renderizar_web(informacion)
+
+        document.getElementById("loading").style.display = "none"
+        document.getElementById("loaded").hidden = false
+
+    }
+
+    main()
+
+</script>
+
+</html>

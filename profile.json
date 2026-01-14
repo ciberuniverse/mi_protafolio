@@ -1,13 +1,13 @@
 {
   "nombre": "Nephtali Hernan Fernandez Miranda",
   "contacto": "hernan.miranda.fernandez@hotmail.com",
+  "descripcion": "Especializado en desarrollo Backend con Python. Actualmente profundizando en FastAPI y con experiencia previa en Flask. Manejo bases de datos NoSQL como MongoDB y Redis. Autodidacta en ciberseguridad, con sólidos fundamentos en protección de aplicaciones. Además, cuento con conocimientos básicos en JavaScript, HTML y CSS, lo que me permite integrar de manera completa el backend con el frontend.",
   "ubicacion": "Chile, Bio-Bio, Concepcion",
     "estudios": [
     "Universidad Tecnológica de Chile, INACAP"
   ],
   "experiencia": [
     {
-      "estado": "Terminado",
       "ocupacion": "Desarrollador FullStack",
       "empresa": "Liceo San Juan Bautista de Hualqui",
       "duracion": "Nov 2025 - Enero 2026",
@@ -15,7 +15,6 @@
       "tecnologias": ["Flask", "MongoDB", "Redis", "Python", "HTML", "JavaScript (Vanilla)", "CSS", "Uso de I.A en secciones no logicas (CSS - HTML)"]
     },
     {
-      "estado": "En Desarrollo - Hobbie",
       "ocupacion": "Creador y Desarrollador",
       "empresa": "cer-TI: Certificaciones gratuitas para T.I",
       "duracion": "Mayo 2025 - Actualidad",

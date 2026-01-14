@@ -1,15 +1,16 @@
 from fastapi import FastAPI
-from validator import Login
-from cv_scrapper import info_cv
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+from cv_scrapper import perfil_
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
-@app.post("/login")
-def login(usuario_info: Login):
-
-    return usuario_info
-
-@app.get("/info")
+@app.get("/api/v1/profile")
 def info():
-    
-    return info_cv
+    return perfil_.retornar_api()
+
+@app.get("/", include_in_schema=False)
+async def profile():
+    return FileResponse("profile.html")
