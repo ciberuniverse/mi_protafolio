@@ -1,4 +1,5 @@
-import datetime, requests, json, time
+import datetime, requests, json
+from modules.utilidades import json_response
 
 class Informacion:
 
@@ -22,16 +23,20 @@ class Informacion:
             return info
         
         except Exception as err:
-            print(f"ERROR SOLUCIONAR EN BACKEND: {err}")
+            return json_response(500, f"ERROR: No se logro obtener la informacion asociada al perfil: {err}")
 
     def retornar_api(self) -> dict:
         if self.fecha_actual == self.ultima_fecha:
-            return self.informacion
+            return json_response(200, self.informacion)
         
         ######### Se actualiza la informacion en caso de tener fechas diferentes
-        self.actualizar_pagina()
+        resultados_ok = self.actualizar_pagina()
+        if resultados_ok["status"] != 200:
+            return resultados_ok
 
-        return self.informacion
+        self.informacion = resultados_ok["data"]
+
+        return json_response(200, self.informacion)
     
     def __str__(self):
         return """fast-api version 1.2.3"""
