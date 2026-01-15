@@ -17,7 +17,7 @@ function mostrar_ocultar_id(id_document, id_solicitante) {
 }
 
 function verificar_data(request_json) {
-
+    
     if (request_json["status"] === 200) {
         return request_json
     }
@@ -42,17 +42,17 @@ function verificar_data(request_json) {
 
 // Se envia la solicitud al endpoint para obtener la informacion del perfil en JSON
 async function obtener_informacion() {
-    const response = await fetch("/api/v1/profile", { "method": "get" })
+    const response = await fetch("https://raw.githubusercontent.com/ciberuniverse/mi_protafolio/refs/heads/main/profile.json", { "method": "get" })
     const informacion = await response.json()
 
-    return verificar_data(informacion)
+    // return verificar_data(informacion) Usar unicamente en fastapi
+    return informacion
 }
 
 // Funcion monolitica encargada de renderizar la pagina web
 async function renderizar_web(informacion_json) {
 
     // Se obtienen los id dinamicos donde se introducira cada seccion del perfil
-    const main_content = document.getElementById("loaded")
     const profile_block = document.getElementById("seccion_perfil")
     const experiencias_block = document.getElementById("experiencias_block")
     const proyectos_block = document.getElementById("proyectos_block")
@@ -195,15 +195,19 @@ async function renderizar_web(informacion_json) {
 }
 
 // Funcion encargada de administrar y mostrar correctamente las cosas cuando cargen completamente
-async function main(params) {
+async function main() {
 
     const informacion = await obtener_informacion()
 
+    /* UNICAMENTE CON FAST API
     if (informacion["status"] !== 200) {
         return
     }
-
     const continuar = await renderizar_web(informacion["data"])
+    
+    */
+
+    const continuar = await renderizar_web(informacion)
 
     document.getElementById("loading").style.display = "none"
     document.getElementById("loaded").hidden = false
