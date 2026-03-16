@@ -24,6 +24,23 @@
   ],
   "certificaciones": [
     {
+      "logotipo": "Harvard",
+      "titulo": "CS50 Introduccion a la Ciberseguridad",
+      "organizacion": "Harvard",
+      "expedicion": "feb. 2026",
+      "url_credencial": "https://certificates.cs50.io/21dd6b1f-b91a-4462-bf66-5987e36d96f9.pdf?size=letter",
+      "aptitudes": [
+        "Fundamentos de la Ciberseguridad",
+        "Amenazas Comunes",
+        "Seguridad de cuentas y Datos",
+        "Seguridad de Redes y Sistemas",
+        "Hacking Etico",
+        "Cifrado"
+      ],
+      "archivo": "CS50_Introduccion_a_la_ciberseguridad.pdf",
+      "descripcion": "Certificado del curso realizado"
+    },
+    {
       "logotipo": "HackerRank",
       "titulo": "API-Rest Intermedio",
       "organizacion": "HackerRank",
@@ -34,6 +51,16 @@
         "Python"
       ],
       "archivo": "rest_api_intermediate_certificate.pdf",
+      "descripcion": "Certificado de la habilidad demostrada"
+    },
+    {
+      "logotipo": "HackerRank",
+      "titulo": "JavaScript (Basic)",
+      "organizacion": "HackerRank",
+      "expedicion": "ene. 2026",
+      "url_credencial": "https://www.hackerrank.com/certificates/3ba9dfa6e5d7",
+      "aptitudes": ["API consumption", "JavaScript"],
+      "archivo": "javascript_basic_certificate.pdf",
       "descripcion": "Certificado de la habilidad demostrada"
     },
     {
@@ -147,6 +174,15 @@
         "Python"
       ],
       "descripcion": "Certificado del curso realizado"
+    },
+    {
+      "titulo": "C-OSIA",
+      "logotipo": "Compuweb",
+      "organizacion": "Compuweb",
+      "expedicion": "feb. 2026",
+      "url_credencial": "https://ciberseguridad.compuweb.cl/verificar/?vc=6U0SOMNtr3",
+      "aptitudes": ["OSINT"],
+      "descripcion":"Certificado del curso realizado"
     }
   ],
 
@@ -170,8 +206,16 @@
     "titulo": "CMS Detector",
     "descripcion": "Herramienta de análisis defensivo que examina sitios web para identificar APIs públicas y endpoints expuestos, ayudando a detectar configuraciones inseguras y reducir riesgos de exposición de servicios críticos.",
     "url": "https://github.com/ciberuniverse/CMS_Detector"
+  },
+  {
+    "titulo": "OSGIT",
+    "descripcion": "OSGIT es una herramienta de OSINT que desarrollé para identificar repositorios de GitHub potencialmente relacionados con el backend de cualquier sitio web, analizando pasivamente su código fuente y utilizando técnicas de GitHub dorks para encontrar coincidencias.",
+    "url": "https://github.com/ciberuniverse/OSGIT"
+  },
+  {
+    "titulo": "jshing",
+    "descripcion": "JSHING es una panel de seguridad basado en el principio “Defend to Attack”, usando Mongita como base de datos y autenticación por token en los endpoints de administración, mientras que los de usuario quedan abiertos para permitir registros libres y obtencion de payloads.",
+    "url":"https://github.com/ciberuniverse/jshing"
   }
 ]
-
-
 }
