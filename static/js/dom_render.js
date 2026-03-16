@@ -68,7 +68,7 @@ async function renderizar_web(informacion_json) {
     plantilla_dom = `
             <div class="profile_rs">
                 <img
-                    src="https://media.licdn.com/dms/image/v2/D4E03AQH0ELpF5bMKOg/profile-displayphoto-shrink_400_400/B4EZdSaSIOHYAg-/0/1749434313221?e=1769644800&v=beta&t=pfgTNCA9ZoNAoC8pc8ruTfaLzhjiiH30qu6SnaApRrA">
+                    src="../static/img/hernan_miranda.png">
                 
                 <div class="urls">
                 <a href="https://www.linkedin.com/in/hernan-mirand4/">LinkedIn</a>
