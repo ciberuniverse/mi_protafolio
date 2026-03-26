@@ -1,0 +1,305 @@
+body {
+    /* Gradiente más suave: gris oscuro a burdeos */
+    background: linear-gradient(to bottom, #1a1a1a, #2c0a0a, #4d1a1a);
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    color: #eaeaea;
+
+    /* texto más claro para contraste */
+}
+
+header {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #1a1a1a;
+    /* gris oscuro en vez de negro puro */
+    color: #f5f5f5;
+    border-bottom: 2px solid #b22222;
+    /* rojo burdeos */
+}
+
+@keyframes pulso {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+        color: #b22222;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.animacion_cargando {
+    animation: pulso 1.5s infinite alternate;
+}
+
+.profile_rs {
+    text-align: center;
+}
+
+.profile_rs .urls {
+    padding: 10px;
+}
+
+.profile_rs .urls a {
+    color: #b22222;
+}
+
+.target_profile,
+.experiencias {
+    background-color: #1a1a1a;
+    padding: 40px;
+    display: flex;
+    font-size: large;
+    /* suaviza el bloque */
+}
+
+.target_profile img {
+    border: 2px solid #b22222;
+    /* rojo más apagado */
+    border-radius: 100%;
+    transition: transform 0.3s ease-out;
+}
+
+.target_profile img:hover {
+    transform: scale(1.03);
+}
+
+.target_profile .info_profile {
+    padding: 40px;
+}
+
+.target_profile li {
+    color: #d46a6a;
+    /* rojo más suave */
+    text-shadow: 0 0 6px #4d1a1a;
+    padding-top: 15px;
+}
+
+.target_profile label {
+    background-color: rgba(255, 255, 255, 0.05);
+    /* gris translúcido */
+    border: 1px solid #b22222;
+    border-radius: 6px;
+    padding: 5px 10px;
+    color: #f5f5f5;
+
+    transition: transform 0.3s ease-out;
+}
+
+.target_profile label:hover {
+    transform: scale(1.03);
+}
+
+.target_experiencia {
+    padding: 20px;
+
+    max-width: 600px;
+    background-color: #1a1a1a;
+    border: #b22222 solid 1px;
+    width: auto;
+
+    transition: 0.3s ease-out;
+}
+
+.target_experiencia .titulo {
+    color: #b22222;
+}
+
+.target_experiencia .duracion {
+    color: gray;
+    padding-bottom: 5px;
+    font-size: medium;
+}
+
+.target_experiencia .tecnologias {
+
+    margin-top: 10px;
+    padding-top: 10px;
+
+    color: #b22222;
+    display: flex;
+    border-top: 1px solid #b22222;
+    font-size: small;
+}
+
+.target_experiencia:hover {
+    transform: scale(1.03);
+    transition: ease-in 0.3s;
+}
+
+.experiencias {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+
+.experiencias h3 {
+    text-align: left;
+}
+
+.proyecto {
+    max-width: 500px;
+    width: auto;
+}
+
+.certificaciones {
+    background-color: #1a1a1a;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.certificaciones .target_experiencia {
+    max-width: 600px;
+    width: 100%;
+
+    cursor: pointer;
+}
+
+.certificaciones h3 {
+    padding: 20px;
+    text-align: center;
+}
+
+.only_phone {
+    display: flex;
+}
+
+.ver_mas {
+    padding: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.error_display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #000000;
+    border: 1px solid#b22222;
+
+    cursor: not-allowed;
+    user-select: none;
+}
+
+@keyframes terminal_pulso {
+    0% {
+        opacity: 100%;
+        background-color: white;
+    }
+
+    50% {
+        opacity: 50%;
+    }
+
+    100% {
+        opacity: 20%;
+    }
+}
+
+.terminal {
+    max-width: 600px;
+    max-height: 150px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+
+    margin: 20px;
+}
+
+.terminal .titulo {
+    border: 1px solid red;
+    width: auto;
+    padding: 5px;
+}
+
+.terminal .descripcion {
+    width: auto;
+    padding: 5px;
+}
+
+.terminal_pulso_div {
+    max-width: 10px;
+    max-height: 20px;
+    height: auto;
+    width: auto;
+
+    animation: terminal_pulso 1s infinite;
+}
+
+/* -------- RESPONSIVE PARA CELULARES -------- */
+@media (max-width: 768px) {
+
+    header h1 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .target_profile {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .target_profile img {
+        width: 150px;
+        height: auto;
+        margin-bottom: 15px;
+    }
+
+    .target_profile .info_profile {
+        padding: 10px;
+    }
+
+    .experiencias {
+        flex-direction: column;
+        gap: 30px;
+        padding: 10px;
+    }
+
+    .experiencias>div {
+        width: 100%;
+    }
+
+    .target_experiencia,
+    .proyecto {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .certificaciones {
+        padding: 10px;
+    }
+
+    .certificaciones .target_experiencia {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .tecnologias {
+        flex-direction: column;
+        white-space: pre-line;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    .only_phone {
+        display: unset;
+    }
+}

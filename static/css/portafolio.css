@@ -1,305 +1,311 @@
-body {
-    /* Gradiente más suave: gris oscuro a burdeos */
-    background: linear-gradient(to bottom, #1a1a1a, #2c0a0a, #4d1a1a);
+/* ---------- RESET & GLOBAL ---------- */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at 10% 20%, #0b0b0b, #1a0505, #2c0a0a);
+    font-family: 'Inter', 'Monaco', monospace;
+    color: #ededed;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 1.5rem;
+}
+
+/* contenedor principal */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* ---------- TIPOGRAFÍA NEÓN ---------- */
+h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #fff, #ff6a6a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+h3 {
+    border-left: 4px solid #ff3333;
+    padding-left: 1rem;
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.4rem;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ff3333, transparent);
+    margin: 2rem 0;
+}
+
+/* ---------- CARDS BASE (efecto vidrio + neón hover) ---------- */
+
+.target_experiencia a {
+    color: #ff6666;
+}
+
+.target_experiencia a {
+    color: #ff0000;
+}
+
+.target_experiencia,
+.proyecto {
+    background: rgba(20, 20, 30, 0.7);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 51, 51, 0.2);
+    border-radius: 24px;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+}
+
+.target_experiencia:hover,
+.proyecto:hover {
+    border-color: #ff3333;
+    box-shadow: 0 0 20px rgba(255, 51, 51, 0.5), 0 8px 20px rgba(0,0,0,0.3);
+    transform: translateY(-5px);
+    background: rgba(30, 30, 40, 0.85);
+}
+
+/* títulos dentro de cards */
+.titulo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ff6666;
+    margin-bottom: 0.3rem;
+}
+
+.duracion {
+    color: #aaa;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+
+.descripcion {
+    color: #ddd;
+    font-size: 0.95rem;
+}
+
+.tecnologias {
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 51, 51, 0.4);
+    font-size: 0.75rem;
+    color: #ff9999;
+    white-space: pre-line;
     font-family: monospace;
-    color: #eaeaea;
-
-    /* texto más claro para contraste */
 }
 
-header {
-    margin: 0;
-    padding: 20px;
+/* ---------- PERFIL ---------- */
+.target_profile {
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-color: #1a1a1a;
-    /* gris oscuro en vez de negro puro */
-    color: #f5f5f5;
-    border-bottom: 2px solid #b22222;
-    /* rojo burdeos */
-}
-
-@keyframes pulso {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
-        color: #b22222;
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-
-.animacion_cargando {
-    animation: pulso 1.5s infinite alternate;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background: rgba(10, 10, 15, 0.6);
+    backdrop-filter: blur(4px);
+    border-radius: 32px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 51, 51, 0.2);
 }
 
 .profile_rs {
     text-align: center;
+    flex: 0 0 200px;
 }
 
-.profile_rs .urls {
-    padding: 10px;
+.profile_rs img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 2px solid #ff3333;
+    object-fit: cover;
+    transition: transform 0.2s ease, box-shadow 0.2s;
 }
 
-.profile_rs .urls a {
-    color: #b22222;
+.profile_rs img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 18px #ff3333;
 }
 
-.target_profile,
-.experiencias {
-    background-color: #1a1a1a;
-    padding: 40px;
-    display: flex;
-    font-size: large;
-    /* suaviza el bloque */
-}
-
-.target_profile img {
-    border: 2px solid #b22222;
-    /* rojo más apagado */
-    border-radius: 100%;
-    transition: transform 0.3s ease-out;
-}
-
-.target_profile img:hover {
-    transform: scale(1.03);
-}
-
-.target_profile .info_profile {
-    padding: 40px;
-}
-
-.target_profile li {
-    color: #d46a6a;
-    /* rojo más suave */
-    text-shadow: 0 0 6px #4d1a1a;
-    padding-top: 15px;
-}
-
-.target_profile label {
-    background-color: rgba(255, 255, 255, 0.05);
-    /* gris translúcido */
-    border: 1px solid #b22222;
-    border-radius: 6px;
-    padding: 5px 10px;
-    color: #f5f5f5;
-
-    transition: transform 0.3s ease-out;
-}
-
-.target_profile label:hover {
-    transform: scale(1.03);
-}
-
-.target_experiencia {
-    padding: 20px;
-
-    max-width: 600px;
-    background-color: #1a1a1a;
-    border: #b22222 solid 1px;
-    width: auto;
-
-    transition: 0.3s ease-out;
-}
-
-.target_experiencia .titulo {
-    color: #b22222;
-}
-
-.target_experiencia .duracion {
-    color: gray;
-    padding-bottom: 5px;
-    font-size: medium;
-}
-
-.target_experiencia .tecnologias {
-
-    margin-top: 10px;
-    padding-top: 10px;
-
-    color: #b22222;
-    display: flex;
-    border-top: 1px solid #b22222;
-    font-size: small;
-}
-
-.target_experiencia:hover {
-    transform: scale(1.03);
-    transition: ease-in 0.3s;
-}
-
-.experiencias {
+.urls {
+    margin-top: 1rem;
     display: flex;
     justify-content: center;
-    gap: 60px;
+    gap: 1.2rem;
 }
 
-.experiencias h3 {
-    text-align: left;
+.urls a {
+    color: #ff6666;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
 }
 
-.proyecto {
-    max-width: 500px;
-    width: auto;
+.urls a:hover {
+    color: #ff0000;
+    text-shadow: 0 0 6px #ff0000;
 }
 
+.info_profile {
+    flex: 1;
+}
+
+.info_profile ul {
+    list-style: none;
+}
+
+.info_profile li {
+    color: #ff6666;
+    margin-top: 0.8rem;
+    font-weight: 600;
+}
+
+.info_profile label {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #f0f0f0;
+    background: rgba(255,255,240,0.05);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* ---------- EXPERIENCIAS & PROYECTOS (layout) ---------- */
+.experiencias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.experiencias > div {
+    flex: 1;
+    min-width: 260px;
+}
+
+/* ---------- CERTIFICACIONES ---------- */
 .certificaciones {
-    background-color: #1a1a1a;
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
+    margin-top: 1rem;
 }
 
 .certificaciones .target_experiencia {
-    max-width: 600px;
-    width: 100%;
-
     cursor: pointer;
+    transition: all 0.2s;
 }
 
-.certificaciones h3 {
-    padding: 20px;
-    text-align: center;
-}
-
-.only_phone {
-    display: flex;
-}
-
+/* botón ver más */
 .ver_mas {
-    padding: 20px;
-    cursor: pointer;
     text-align: center;
+    margin: 2rem 0 1rem;
 }
 
+.ver_mas a {
+    color: #ff6666;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid #ff6666;
+    padding: 0.5rem 1.5rem;
+    border-radius: 40px;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.ver_mas a:hover {
+    background: #ff3333;
+    color: #0a0a0a;
+    box-shadow: 0 0 12px #ff3333;
+    border-color: #ff3333;
+}
+
+/* ---------- LOADING MODERNO ---------- */
+#loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(255, 51, 51, 0.3);
+    border-top: 4px solid #ff3333;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* terminal error */
 .error_display {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background: #000000;
-    border: 1px solid#b22222;
-
-    cursor: not-allowed;
-    user-select: none;
+    min-height: 70vh;
 }
-
-@keyframes terminal_pulso {
-    0% {
-        opacity: 100%;
-        background-color: white;
-    }
-
-    50% {
-        opacity: 50%;
-    }
-
-    100% {
-        opacity: 20%;
-    }
-}
-
 .terminal {
+    background: #0a0a0a;
+    border: 1px solid #ff3333;
+    border-radius: 12px;
+    padding: 1.5rem;
+    font-family: monospace;
     max-width: 600px;
-    max-height: 150px;
     width: 100%;
-    height: 100%;
-    border: 1px solid red;
-
-    margin: 20px;
+    box-shadow: 0 0 15px rgba(255,0,0,0.2);
 }
-
 .terminal .titulo {
-    border: 1px solid red;
-    width: auto;
-    padding: 5px;
+    color: #ff3333;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
 }
-
 .terminal .descripcion {
-    width: auto;
-    padding: 5px;
+    color: #ccc;
 }
-
 .terminal_pulso_div {
-    max-width: 10px;
-    max-height: 20px;
-    height: auto;
-    width: auto;
-
-    animation: terminal_pulso 1s infinite;
+    animation: pulse 1s infinite;
+    display: inline-block;
+    margin-left: 4px;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
 }
 
-/* -------- RESPONSIVE PARA CELULARES -------- */
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
-
-    header h1 {
-        font-size: 1.3rem;
-        text-align: center;
+    body {
+        padding: 1rem;
     }
-
     .target_profile {
         flex-direction: column;
         align-items: center;
-        padding: 20px;
         text-align: center;
     }
-
-    .target_profile img {
-        width: 150px;
-        height: auto;
-        margin-bottom: 15px;
+    .info_profile li {
+        text-align: left;
     }
-
-    .target_profile .info_profile {
-        padding: 10px;
-    }
-
     .experiencias {
         flex-direction: column;
-        gap: 30px;
-        padding: 10px;
     }
-
-    .experiencias>div {
-        width: 100%;
+    h1 {
+        font-size: 1.5rem;
     }
-
-    .target_experiencia,
-    .proyecto {
-        max-width: 100%;
-        width: 100%;
-    }
-
-    .certificaciones {
-        padding: 10px;
-    }
-
-    .certificaciones .target_experiencia {
-        width: 100%;
-        margin-bottom: 15px;
-    }
-
-    .tecnologias {
-        flex-direction: column;
-        white-space: pre-line;
-    }
-
-    body {
-        font-size: 14px;
-    }
-
-    .only_phone {
-        display: unset;
+    .target_experiencia, .proyecto {
+        padding: 1rem;
     }
 }

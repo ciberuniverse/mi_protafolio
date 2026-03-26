@@ -1,61 +1,55 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Hernan Miranda · Dev Portfolio</title>
+    <!-- Google Fonts + GitHub Buttons -->
+    <link rel="stylesheet" href="../static/css/portafolio.css">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="../static/css/portafolio.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
 </head>
 
-<body id="error">
-
-    <header>
+<body>
+<div class="container">
+    <header style="margin: 1rem 0 2rem 0; text-align: center;">
         <h1>DEVELOPER = "Hernan Miranda"</h1>
     </header>
 
+    <!-- LOADING -->
     <section id="loading">
-        <center>
-            <h2 class="animacion_cargando">Cargando ...</h2>
-        </center>
+        <div class="loader"></div>
     </section>
 
-    <section id="loaded" hidden>
-
-        <div id="seccion_perfil" class="target_profile"><!-- Seccion del perfil --></div>
+    <!-- CONTENIDO PRINCIPAL (oculto hasta cargar) -->
+    <main id="loaded" hidden>
+        <!-- perfil dinámico -->
+        <div id="seccion_perfil" class="target_profile"></div>
         
         <hr>
 
         <div class="experiencias">
-
             <div>
                 <h3>EXPERIENCIAS = True</h3>
-                <div id="experiencias_block"> <!-- Bloque dinamico de experiencias aqui --></div>
+                <div id="experiencias_block"></div>
             </div>
-
             <div>
                 <h3>PROYECTOS = system('ls')</h3>
-                <div id="proyectos_block"> <!-- Bloque dinamico proyectos --> </div>
+                <div id="proyectos_block"></div>
             </div>
-
         </div>
 
         <hr>
 
         <div class="certificaciones">
-
-            <div id="certificaciones_block">
-                <h3>CURSOS = True</h3>
-            </div>
-
+            <h3>CURSOS = True</h3>
+            <div id="certificaciones_block"></div>
         </div>
+    </main>
+</div>
 
-    </section>
-    <script src="../static/js/dom_render.js"></script>
+<script src="../static/js/dom_render.js"></script>
 </body>
-
 </html>

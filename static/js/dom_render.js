@@ -1,217 +1,154 @@
-
-// Funcion encargada de mostrar dinamicamente el texto dependiendo del estado de los certificados
+// Función para mostrar/ocultar certificados extra
 function mostrar_ocultar_id(id_document, id_solicitante) {
-
-    const documento_m = document.getElementById(id_document)
-    const documento_boton = document.getElementById(id_solicitante)
-
-    if (documento_m.hidden) {
-        documento_boton.innerHTML = "Ver Menos ..."
-
-        documento_m.hidden = false
-        return
+    const elemento = document.getElementById(id_document);
+    const boton = document.getElementById(id_solicitante);
+    if (elemento.hidden) {
+        boton.innerHTML = "Ver Menos ...";
+        elemento.hidden = false;
+    } else {
+        boton.innerHTML = "Ver Más ...";
+        elemento.hidden = true;
     }
-
-    documento_boton.innerHTML = "Ver Mas ..."
-    documento_m.hidden = true
 }
 
-function verificar_data(request_json) {
-    
-    if (request_json["status"] === 200) {
-        return request_json
-    }
-
-    const dom_body = document.getElementById("error")
-    dom_body.setAttribute("class", "error_display")
-
-    dom_body.innerHTML = `
+// Mostrar error tipo terminal
+function mostrarError(status, mensaje) {
+    const body = document.body;
+    body.classList.add('error_display');
+    body.innerHTML = `
         <div class="terminal">
-            <div class="titulo">
-                SYSTEM FAILURE CODE ${request_json["status"]}
-            </div>
-
+            <div class="titulo">SYSTEM FAILURE CODE ${status}</div>
             <div class="descripcion">
-                root:root > ${request_json["data"]} <label class="terminal_pulso_div">#</label>
+                root:root > ${mensaje} <span class="terminal_pulso_div">#</span>
             </div>
         </div>
-        `
-
-    return request_json
+    `;
 }
 
-// Se envia la solicitud al endpoint para obtener la informacion del perfil en JSON
+// Obtener datos desde GitHub raw (o desde local si se cambia la ruta)
 async function obtener_informacion() {
-    const response = await fetch("https://raw.githubusercontent.com/ciberuniverse/mi_protafolio/refs/heads/main/profile.json", { "method": "get" })
-    const informacion = await response.json()
-
-    // return verificar_data(informacion) Usar unicamente en fastapi
-    return informacion
+    try {
+        const response = await fetch("https://raw.githubusercontent.com/ciberuniverse/mi_protafolio/refs/heads/main/profile.json");
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        return data;
+    } catch (err) {
+        console.error("Error fetching data:", err);
+        mostrarError(500, "No se pudo cargar el perfil. Verifica la conexión o la URL.");
+        throw err;
+    }
 }
 
-// Funcion monolitica encargada de renderizar la pagina web
-async function renderizar_web(informacion_json) {
+// Renderizar todo el contenido
+async function renderizar_web(data) {
+    // elementos contenedores
+    const profileBlock = document.getElementById("seccion_perfil");
+    const expBlock = document.getElementById("experiencias_block");
+    const proyBlock = document.getElementById("proyectos_block");
+    const certBlock = document.getElementById("certificaciones_block");
 
-    // Se obtienen los id dinamicos donde se introducira cada seccion del perfil
-    const profile_block = document.getElementById("seccion_perfil")
-    const experiencias_block = document.getElementById("experiencias_block")
-    const proyectos_block = document.getElementById("proyectos_block")
-    const certificaciones_block = document.getElementById("certificaciones_block")
+    // ----- PERFIL -----
+    profileBlock.innerHTML = `
+        <div class="profile_rs">
+            <img src="../static/img/hernan_miranda.png" alt="Hernan Miranda">
+            <div class="urls">
+                <a href="https://www.linkedin.com/in/hernan-mirand4/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/ciberuniverse" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+        <div class="only_phone info_profile">
+            <ul>
+                <li>Nombre: <label>${escapeHtml(data.nombre)}</label></li>
+                <li>Contacto: <label>${escapeHtml(data.contacto)}</label></li>
+                <li>Titulo: <label>${escapeHtml(data.titulo)}</label></li>
+                <li>Ubicación: <label>${escapeHtml(data.ubicacion)}</label></li>
+                <li>Lema: <label>Lo que no se sabe, se aprende.</label></li>
+            </ul>
+            <ul>
+                <li>Descripción: <label>${escapeHtml(data.descripcion)}</label></li>
+            </ul>
+        </div>
+    `;
 
-    // Se le asigna una variable a cada seccion de nuestro perfil
-    const info_experiencias = informacion_json["experiencia"]
-    const info_estudios = informacion_json["estudios"]
-    const info_certificaciones = informacion_json["certificaciones"]
-    const info_proyectos = informacion_json["proyectos"]
+    // ----- EXPERIENCIAS -----
+    let expHtml = "";
+    for (const ex of data.experiencia) {
+        let techs = ex.tecnologias.map(t => `> ${t}`).join("\n");
+        expHtml += `
+            <div class="target_experiencia">
+                <div class="titulo">${escapeHtml(ex.ocupacion)}</div>
+                <div class="duracion">${escapeHtml(ex.duracion)}</div>
+                <div class="descripcion">${escapeHtml(ex.descripcion)}</div>
+                <div class="tecnologias">${escapeHtml(techs)}</div>
+            </div>
+        `;
+    }
+    expBlock.innerHTML = expHtml;
 
-    // Se crea una variable que se usara de manera temporar para procesamiento del DOM
-    plantilla_dom = `
-            <div class="profile_rs">
-                <img
-                    src="../static/img/hernan_miranda.png">
-                
-                <div class="urls">
-                <a href="https://www.linkedin.com/in/hernan-mirand4/">LinkedIn</a>
-                <a href="https://github.com/ciberuniverse">GitHub</a>
+    // ----- PROYECTOS -----
+    let proyHtml = "";
+    for (const pr of data.proyectos) {
+        proyHtml += `
+            <div class="proyecto target_experiencia">
+                <div class="titulo">${escapeHtml(pr.titulo)}</div>
+                <div class="descripcion">${escapeHtml(pr.descripcion)}</div>
+                <div class="tecnologias">
+                    <a class="" href="${pr.url}" data-icon="octicon-mark-github" data-show-count="true" aria-label="Ver repositorio">Ir al Repositorio</a>
                 </div>
             </div>
+        `;
+    }
+    proyBlock.innerHTML = proyHtml;
 
-            <div class="only_phone">
-            <div class="info_profile">
-                <ul>
-                    <li>Nombre: </li> <label>${informacion_json["nombre"]}</label>
-                    <li>Contacto: </li> <label>${informacion_json["contacto"]}</label>
-                    <li>Ubicacion: </li> <label>${informacion_json["ubicacion"]}</label>
-                    <li>Lema: </li> <label>Lo que no se sabe, se aprende.</label>
-                </ul>
-            </div>
+    // ----- CERTIFICACIONES (con toggle "Ver más") -----
+    let certHtml = "";
+    let idx = 0;
+    const certs = data.certificaciones;
+    const threshold = 3;
 
-            <div class="info_profile">
-                <ul>
-                    <li>Descripción: </li>
-                    <label>
-                        ${informacion_json["descripcion"]}
-                    </label>
-                </ul>
-            </div>
-            </div>
-        `
-
-    // Se agrega el perfil de manera dinamica al DOM
-    profile_block.innerHTML = plantilla_dom
-
-    // Variable encargada de almacenar iteraciones por informacion del DOM
-    let dom_creation_tmp = ""
-    for (let ex of info_experiencias) {
-
-        plantilla_dom = `
-                <div class="target_experiencia">
-                <div class="titulo">${ex["ocupacion"]}</div>
-
-                    <div class="duracion">${ex["duracion"]}</div>
-                    <div class="descripcion">
-                        ${ex["descripcion"]}
-                    </div>
-                    
-                    <div class="tecnologias">
-                        {{ tecnologias }}
-                    </div>
-
-                </div>
-
-                </div>
-            `
-
-        // Se crean de manera dinamica las tecnologias dominantes
-        tecnologias_ = ""
-        for (let tecnologia_ of ex["tecnologias"]) {
-            tecnologias_ += "> " + tecnologia_ + "\n"
+    for (let i = 0; i < certs.length; i++) {
+        const ct = certs[i];
+        if (i === threshold) {
+            certHtml += `<div id="ver_mas_ct" hidden>`;
         }
-
-        // Se agrega esta iteracion a la variable temporal del DOM
-        plantilla_dom = plantilla_dom.replace("{{ tecnologias }}", tecnologias_)
-        dom_creation_tmp += plantilla_dom
+        let apts = ct.aptitudes.map(a => `> ${a}`).join("\n");
+        certHtml += `
+            <div class="target_experiencia" onclick='window.open("${ct.url_credencial}")' title="Verificar certificado">
+                <div class="titulo">${escapeHtml(ct.titulo)}</div>
+                <div class="duracion">${escapeHtml(ct.organizacion)}</div>
+                <div class="tecnologias">${escapeHtml(apts)}</div>
+            </div>
+        `;
     }
-
-    // Se agrega la variable que contiene las secciones dinamicas nuevamente
-    experiencias_block.innerHTML += dom_creation_tmp
-
-    // Se limpia la variable
-    dom_creation_tmp = ""
-
-    // --------- Se repite por cada seccion del perfil con variaciones minimas --------
-    for (let pr of info_proyectos) {
-        plantilla_dom = `
-                <div class="proyecto target_experiencia">
-                    <div class="titulo">${pr["titulo"]}</div>
-                    <div class="descripcion">${pr["descripcion"]}</div>
-                    <div class="tecnologias">
-                        <a class="github-button" href="${pr["url"]}" data-icon="octicon-mark-github" data-show-count="true" aria-label="">Ir al Repositorio</a>
-                    </div>
-                </div>
-            `
-
-        dom_creation_tmp += plantilla_dom
+    if (certs.length > threshold) {
+        certHtml += `</div><div class="ver_mas"><a id="ver_mas_ct_cl" onclick="mostrar_ocultar_id('ver_mas_ct', 'ver_mas_ct_cl')">Ver Más ...</a></div>`;
     }
-
-    proyectos_block.innerHTML = dom_creation_tmp
-    dom_creation_tmp = ""
-
-    let idx = 0
-    for (let ct of info_certificaciones) {
-
-        if (idx == 3) {
-            dom_creation_tmp += "<div id='ver_mas_ct' hidden>"
-        }
-
-        plantilla_dom = `
-                <div class="target_experiencia" onclick='window.open("${ct["url_credencial"]}")' title="Verificar Certificado">
-                    
-                    <div class="titulo">${ct["titulo"]}</div>
-                    <div class="duracion">${ct["organizacion"]}</div>
-
-                    <div class="tecnologias">
-                        {{ tecnologias }}
-                    </div>
-
-                </div>
-            `
-        tecnologias_ = ""
-        for (let tecnologia_ of ct["aptitudes"]) {
-            tecnologias_ += "> " + tecnologia_ + "\n"
-        }
-
-        plantilla_dom = plantilla_dom.replace("{{ tecnologias }}", tecnologias_)
-        dom_creation_tmp += plantilla_dom
-        idx += 1
-    }
-
-    if (idx > 3) {
-        dom_creation_tmp += `</div><div class="ver_mas"><a id="ver_mas_ct_cl" onclick="mostrar_ocultar_id('ver_mas_ct', 'ver_mas_ct_cl')" title="Mostrar todas las certificaciones">Ver Mas ... </a></div>`
-    }
-    certificaciones_block.innerHTML += dom_creation_tmp
-
-    return true
+    certBlock.innerHTML = certHtml;
 }
 
-// Funcion encargada de administrar y mostrar correctamente las cosas cuando cargen completamente
-async function main() {
-
-    const informacion = await obtener_informacion()
-
-    /* UNICAMENTE CON FAST API
-    if (informacion["status"] !== 200) {
-        return
-    }
-    const continuar = await renderizar_web(informacion["data"])
-    
-    */
-
-    const continuar = await renderizar_web(informacion)
-
-    document.getElementById("loading").style.display = "none"
-    document.getElementById("loaded").hidden = false
-
+// utilidad para escapar HTML (seguridad)
+function escapeHtml(str) {
+    if (!str) return "";
+    return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+        return c;
+    });
 }
 
-main()
+// MAIN
+(async function main() {
+    try {
+        const data = await obtener_informacion();
+        await renderizar_web(data);
+        // ocultar loading y mostrar contenido
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("loaded").hidden = false;
+    } catch (err) {
+        console.error("Error en la carga:", err);
+        // el error ya se mostró con mostrarError()
+    }
+})();

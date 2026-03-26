@@ -3,9 +3,7 @@
   "contacto": "hernan.miranda.fernandez@hotmail.com",
   "descripcion": "Especializado en desarrollo Backend con Python. Actualmente profundizando en FastAPI y con experiencia previa en Flask. Manejo bases de datos NoSQL como MongoDB y Redis. Autodidacta en ciberseguridad, con sólidos fundamentos en protección de aplicaciones. Además, cuento con conocimientos básicos en JavaScript, HTML y CSS, lo que me permite integrar de manera completa el backend con el frontend.",
   "ubicacion": "Chile, Bio-Bio, Concepcion",
-    "estudios": [
-    "Universidad Tecnológica de Chile, INACAP"
-  ],
+  "titulo": "Tecnico Analista Programador - INACAP (TITULADO ENERO 2026)",
   "experiencia": [
     {
       "ocupacion": "Desarrollador FullStack (Practica)",
@@ -17,15 +15,22 @@
     {
       "ocupacion": "Creador y Desarrollador",
       "empresa": "cer-TI: Certificaciones gratuitas para T.I",
-      "duracion": "Mayo 2025 - Actualidad",
+      "duracion": "Mayo 2025 - En Pausa",
       "descripcion": "Desarrollo de un sistema de evaluación para profesionales de TI, que integró procesos de automatización, scripts de scraping y un módulo de gestión de usuarios para administrar sus certificaciones de manera eficiente.",
       "tecnologias": ["Flask", "MongoDB", "JavaScript (Vanilla)", "HTML", "CSS"]
+    },
+    {
+      "ocupacion": "Investigador Independiente en Ciberseguridad (Bug Bounty)",
+      "empresa": "BugCrowd",
+      "duracion":"Nov 2025 - Actualidad",
+      "descripcion": "Realización de auditorías web mediante programas Bug Bounty, identificando vulnerabilidades como exposición de información, abuso de APIs, enumeración de usuarios y configuraciones inseguras. Logré detectar fallos en sistemas de la NASA obteniendo una clasificación P2 según el estándar VRT.",
+      "tecnologias": ["Ciberseguridad"]
     }
   ],
   "certificaciones": [
     {
       "logotipo": "Harvard",
-      "titulo": "CS50 Introduccion a la Ciberseguridad",
+      "titulo": "CS50 Introduction to Cybersecurity",
       "organizacion": "Harvard",
       "expedicion": "feb. 2026",
       "url_credencial": "https://certificates.cs50.io/21dd6b1f-b91a-4462-bf66-5987e36d96f9.pdf?size=letter",
@@ -52,6 +57,24 @@
       ],
       "archivo": "rest_api_intermediate_certificate.pdf",
       "descripcion": "Certificado de la habilidad demostrada"
+    },
+    {
+      "logotipo": "Fortinet",
+      "titulo": "Fortinet Certified Fundamentals in Cybersecurity",
+      "organizacion": "Fortinet",
+      "expedicion": "mar. 2026 - mar. 2028",
+      "url_credencial": "https://training.fortinet.com/admin/tool/certificate/view.php?code=2305661570NH",
+      "aptitudes": ["Ciberseguridad", "WAFs", "Deteccion de Malware", "Seguridad de la Informacion", "Inteligencia de Ciberamenazas", "Ingenieria Social", "Seguridad de Redes", "Privacidad de Datos"],
+      "descripcion": "Certificado de los conocimientos aprendidos"
+    },
+    {
+      "logotipo": "Codigofacilito",
+      "titulo": "Curso Profesional de node.js",
+      "organizacion": "Codigofacilito",
+      "expedicion": "mar. 2026",
+      "url_credencial": "https://codigofacilito.com/certificates/6587e947-49d6-45e2-8f0e-ffb08f1f8c80",
+      "aptitudes": ["Node JS", "API REST", "API consumption"],
+      "descripcion": "Certificado de la habilidad adquirida"
     },
     {
       "logotipo": "HackerRank",
@@ -209,11 +232,11 @@
   },
   {
     "titulo": "OSGIT",
-    "descripcion": "OSGIT es una herramienta de OSINT que desarrollé para identificar repositorios de GitHub potencialmente relacionados con el backend de cualquier sitio web, analizando pasivamente su código fuente y utilizando técnicas de GitHub dorks para encontrar coincidencias.",
+    "descripcion": "OSGIT es una herramienta de OSINT que se desarrollo para identificar repositorios de GitHub potencialmente relacionados con el backend de cualquier sitio web, analizando pasivamente su código fuente y utilizando técnicas de GitHub dorks para encontrar coincidencias. Optimizando el tiempo ocupado a la hora de realizar busquedas manuales.",
     "url": "https://github.com/ciberuniverse/OSGIT"
   },
   {
-    "titulo": "jshing",
+    "titulo": "JSHING",
     "descripcion": "JSHING es una panel de seguridad basado en el principio “Defend to Attack”, usando Mongita como base de datos y autenticación por token en los endpoints de administración, mientras que los de usuario quedan abiertos para permitir registros libres y obtencion de payloads.",
     "url":"https://github.com/ciberuniverse/jshing"
   }
